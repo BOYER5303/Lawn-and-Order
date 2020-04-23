@@ -1,68 +1,108 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+LAWN AND ORDER
 
-## Available Scripts
+Mission Statement(for revision):
 
-In the project directory, you can run:
+Why should a whole community individually spend thousands of dollars on products that are used once or twice a month and then stored for the other half of the year.  Forget all those lame push mowers and hand shoveling snow, for pennies on the dollar you can have access to the Cadillac of yard care equipment.  Not only will this save money but imagine all the hours saved slaving in the sun/cold. Subscribers can even offer up their own equipment and tools to share, the possibilities are endless.
 
-### `npm start`
+MVP:
+Users have personal accounts.
+Ability to take payment via card.
+Multiple products in DB.
+Ability to add a product to borrow.
+Ability to delete a product to borrow.
+Ability to update/add repair notes.
+Calender to track who requested products and address.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+ICEBOX:
+Ability to email/text notifications.
+API to Randomized lawn care tips in footer.
+Add inventory functionality.
 
-### `npm test`
+DATABASE
+Tables:
+users, products, maintenance
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    first_name TEXT(24),
+    last_name TEXT(24),
+    email VARCHAR(42),
+    hashed_password TEXT,
+    address VARCHAR(100)
+);
 
-### `npm run build`
+CREATE TABLE products (
+    product_id SERIAL PRIMARY KEY,
+    category TEXT(24),
+    product TEXT(24),
+    img TEXT
+);
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+CREATE TABLE maintenance(
+    maintenance_id SERIAL PRIMARY KEY,
+    maintenance_notes TEXT,
+    img TEXT
+);
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+SERVER
+Dependencies:
+massive
+express
+dotenv
+express-session
+bcrypt
+? Payment method
+? Calendar
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Endpoints:
 
-### `npm run eject`
+authCtrl:
+login: /auth/login
+register: /auth/register
+logout: /auth/logout
+userSession: /auth/user_session
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+productCtrl:
+(app.get)getProducts: /api/get_products
+(app.post)postProduct: /api/add_product
+(app.delete) deleteNote: /api/delete_note/:id
+(app.delete) deleteProduct: /api/delete_product/:id
+(app.post) /api/add_note
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+CLIENT
+Dependencies:
+axios
+redux
+react-redux
+redux-promise-middleware
+react-router-dom
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+File Structure:
+src/
+    App.js
+    App.css
+    reset.css
+    index.js
+    COMPONENTS
+        Header.js/.css
+        LoginHeader.js/.css
+        Main.js/.css
+        Login.js/.css
+        AddProduct.js/.css
+        Calendar.js/.css
+        Contact.js/.css
+        Payment.js/.css ???
+    REDUX
+        Store.js
+        reducer.js
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Routes:
+login: /login
+main: /
+product: /product/:id
+form: /form
+contact: /contact
+calender: /calender
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# Lawn-and-Order
