@@ -27,7 +27,9 @@ const Header = () => {
 		<ul>
 			<li><a href="#">Subscribe</a></li>
 		</ul>
-
+		{/* <div className='transition'>
+                <h1>PRODUCTS</h1>
+            </div> */}
 	</div>
 
 </header>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Card from './Card'
 import {Link, Redirect} from 'react-router-dom'
+import './Dash.css'
 //import {SelectDate} from './SelectDate'
 //import {connect} from 'react-redux'
 //import {logout} from '../../Redux/reducers/user'
@@ -15,6 +16,7 @@ export default class Dash extends Component {
             //category: '',
             //product: '',
             products: [],
+            notes: [],
             redirect: false
         }
         this.getProducts = this.getProducts.bind(this)
@@ -24,6 +26,7 @@ export default class Dash extends Component {
 
     componentDidMount() {
         this.getProducts()
+        this.getNotes()
     }
 
     getProducts = () => {
@@ -34,6 +37,15 @@ export default class Dash extends Component {
             })
             console.log(data)
         }).catch(err => console.log('Error getting product', err))
+    }
+    getNotes = () => {
+        axios.get('/api/notes')
+        .then(({data}) => {
+            this.setState({
+                notes: data
+            })
+            console.log(data)
+        }).catch(err => console.log('Error getting notes', err))
     }
     
     deleteProduct = id => {
@@ -84,7 +96,8 @@ export default class Dash extends Component {
             // img={img}/>
                 )
         return (
-                    <div className='dash-main'>
+            
+                    <div className='dash-main'>     
                         <div>
                             <button onClick={this.handleLogout}>logout</button>
                                     <Link to='/form' className='link'>add product</Link>

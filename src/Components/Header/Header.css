@@ -13,8 +13,6 @@
 	margin: 0 auto;
 }
 
-/* Logo */
-
 .header-main .header-limiter h1{
 	float: left;
 	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
@@ -58,8 +56,6 @@
 	color: green;
 }
 
-/* Login/Sign up buttons */
-
 .header-main .header-limiter ul {
 	font: 14px Arial, Helvetica, sans-serif;
 	list-style: none;
@@ -86,7 +82,7 @@
 	border-radius: 3px;
 }
 
-/* Making the header responsive */
+
 
 @media all and (max-width: 600px) {
 
@@ -112,9 +108,6 @@
 		font-size: 13px;
 	}
 
-	.header-main .header-limiter ul {
-		display: none;
-	}
 
 }
 
@@ -124,3 +117,16 @@ body {
 	margin:0;
 	padding:0;
 }
+
+/* .transition{
+    background-image: url(../../images/grass_background.jpg);
+    background-size: cover;
+   background-position: bottom center;
+   background-repeat: no-repeat;
+   display: inline-block;
+   height: 300px;
+   padding: 0;
+   color: white;
+   font-size: 60;
+   
+} */

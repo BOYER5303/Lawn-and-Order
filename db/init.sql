@@ -13,6 +13,12 @@ CREATE TABLE products (
     img TEXT
 );
 
+CREATE TABLE notes(
+  notes_id SERIAL PRIMARY KEY,
+  product_id INT REFERENCES products(product_id),
+  note TEXT
+);
+
 INSERT INTO users (name, address, email,  password)
 VALUES ('Jason Boyer', '1234 Boarder Road, Papillion NE 68005', 'byr_jsn@devmtn.com', 'Password'),
 ('John Denver', '1234 Country Rd, Denver CO 12345', 'dnvr_jhn@devmtn.com', 'Password');

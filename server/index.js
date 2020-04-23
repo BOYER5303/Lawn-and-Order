@@ -3,9 +3,19 @@ const massive = require('massive')
 const session = require('express-session')
 const app = express()
 require('dotenv').config()
+const nodemailer = require('nodemailer')
 
+const noteCtrl = require('./controllers/noteCtrl')
 const {login, register, logout, getUser} = require('./controllers/authCtrl')
 const productCtrl = require('./controllers/productCtrl')
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true})) 
+
+const cors = require('cors')
+app.use(cors())
+
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
@@ -37,6 +47,51 @@ app.get('/auth/current', getUser)
 app.get('/api/products', productCtrl.getProducts)
 app.post('/api/products', productCtrl.createProduct)
 app.delete('/api/products/:id', productCtrl.deleteProduct)
+
+
+// app.get('/api/notes', noteCtrl.getNotes)
+// app.post('/api/notes', noteCtrl.createNote)
+// app.put('/api/notes/:id', noteCtrl.updateNote)
+// app.delete('/api/notes/:id', noteCtrl.deleteNote)
+
+
+app.get('/', (req, res) => {
+    res.send('Welcome to my api');
+  })
+  
+  app.post('/api/v1', (req,res) => {
+    var data = req.body;
+  
+  var smtpTransport = nodemailer.createTransport({
+    service: 'Gmail',
+    port: 465,
+    auth: {
+      user: 'USERNAME',
+      pass: 'PASSWORD'
+    }
+  });
+  
+  var mailOptions = {
+    from: data.email,
+    to: 'ENTER_YOUR_EMAIL',
+    subject: 'ENTER_YOUR_SUBJECT',
+    html: `<p>${data.name}</p>
+            <p>${data.email}</p>
+            <p>${data.subject}</p>
+            <p>${data.message}</p>`
+  };
+  
+  smtpTransport.sendMail(mailOptions,
+  (error, response) => {
+    if(error) {
+      res.send(error)
+    }else {
+      res.send('Success')
+    }
+    smtpTransport.close();
+  });
+  
+  })
 
 
 

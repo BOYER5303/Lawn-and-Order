@@ -1,21 +1,24 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import Auth from './Components/Auth/Auth';
-import Dashboard from './Components/Dashboard';
+import React from 'react'
+//import './App.scss'
+import {Route, Switch} from 'react-router-dom'
 import Header from './Components/Header/Header'
-import './App.css';
+import Auth from './Components/Auth/Auth'
+import Dash from './Components/Dash/Dash'
+import Form from './Components/Form/Form'
+import Contact from './Components/Contact/Contact'
 
 const App = () => {
   return (
-    <div className="App">
+    <div className='app'>
       <Header/>
       <Switch>
-        <Route path='/' exact component= {Auth}/>
-        <Route path='/dashboard' component = {Dashboard}/>
+        <Route path='/form' component={Form}/>
+        <Route path='/dash' component={Dash}/>
+        <Route exact path='/' component={Auth}/>
+        <Route path='/contact' component={Contact}/>
       </Switch>
-      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

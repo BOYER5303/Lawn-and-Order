@@ -34,7 +34,7 @@ module.exports = {
             const db = req.app.get('db')
             const {id} = req.params
         
-            const products = await db.products.delete_product({id}) 
+            const products = await db.products.delete_product(id) 
             res.status(200).send(products)
         } catch (error) {
             console.log('Product deletion error.', error)
