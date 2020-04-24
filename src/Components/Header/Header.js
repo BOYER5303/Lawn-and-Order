@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
 import "./Header.css"
 import { HashRouter, NavLink } from 'react-router-dom'
+import StripeBtn from './Charge'
+
 //import Contact from "../Contact"
 
 
@@ -12,7 +14,7 @@ const Header = () => {
 
 	<div className="header-limiter">
 
-		<h1><a href="#">Lawn<span>and</span><span>Order</span></a></h1>
+		<h1><a>Lawn<span>and</span><span>Order</span></a></h1>
 
 		<nav>
 			
@@ -25,11 +27,10 @@ const Header = () => {
 		</nav>
 
 		<ul>
-			<li><a href="#">Subscribe</a></li>
+			<StripeBtn/>
+			{/* //<NavLink to="/charge">Subscribe</NavLink> */}
 		</ul>
-		{/* <div className='transition'>
-                <h1>PRODUCTS</h1>
-            </div> */}
+		
 	</div>
 
 </header>

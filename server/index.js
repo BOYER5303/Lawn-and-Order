@@ -16,8 +16,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 const cors = require('cors')
 app.use(cors())
 
+const configureRoutes = require('./controllers')
+configureRoutes(app);
 
-const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
+const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, EMAIL, PASSWORD } = process.env
 
 massive({
     connectionString: CONNECTION_STRING, 
@@ -54,7 +56,7 @@ app.delete('/api/products/:id', productCtrl.deleteProduct)
 // app.put('/api/notes/:id', noteCtrl.updateNote)
 // app.delete('/api/notes/:id', noteCtrl.deleteNote)
 
-
+//contact form
 app.get('/', (req, res) => {
     res.send('Welcome to my api');
   })
@@ -66,15 +68,15 @@ app.get('/', (req, res) => {
     service: 'Gmail',
     port: 465,
     auth: {
-      user: 'USERNAME',
-      pass: 'PASSWORD'
+      user: EMAIL,
+      pass: PASSWORD
     }
   });
   
   var mailOptions = {
     from: data.email,
-    to: 'ENTER_YOUR_EMAIL',
-    subject: 'ENTER_YOUR_SUBJECT',
+    to: 'EMAIL',
+    subject: 'Complaints',
     html: `<p>${data.name}</p>
             <p>${data.email}</p>
             <p>${data.subject}</p>
@@ -96,3 +98,4 @@ app.get('/', (req, res) => {
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on ${SERVER_PORT}`))
+
