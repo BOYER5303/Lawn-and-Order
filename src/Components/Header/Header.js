@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import "./Header.css"
 import { HashRouter, NavLink } from 'react-router-dom'
 import StripeBtn from './Charge'
@@ -28,7 +28,6 @@ const Header = () => {
 
 		<ul>
 			<StripeBtn/>
-			{/* //<NavLink to="/charge">Subscribe</NavLink> */}
 		</ul>
 		
 	</div>

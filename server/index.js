@@ -5,7 +5,7 @@ const app = express()
 require('dotenv').config()
 const nodemailer = require('nodemailer')
 
-const noteCtrl = require('./controllers/noteCtrl')
+//const noteCtrl = require('./controllers/noteCtrl')
 const {login, register, logout, getUser} = require('./controllers/authCtrl')
 const productCtrl = require('./controllers/productCtrl')
 
@@ -49,6 +49,7 @@ app.get('/auth/current', getUser)
 app.get('/api/products', productCtrl.getProducts)
 app.post('/api/products', productCtrl.createProduct)
 app.delete('/api/products/:id', productCtrl.deleteProduct)
+app.put('/api/products/:id', productCtrl.updateNote)
 
 
 // app.get('/api/notes', noteCtrl.getNotes)

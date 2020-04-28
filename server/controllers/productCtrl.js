@@ -20,8 +20,8 @@ module.exports = {
     createProduct: async (req, res) => {
         try {
             const db = req.app.get('db')
-            const {category, product, img} = req.body
-            const newProduct = await db.products.create_product([category, product, img])
+            const {category, product, img, note} = req.body
+            const newProduct = await db.products.create_product([category, product, img, note])
             res.status(200).send(newProduct)
         } catch (error) {
             console.log('Product creation error.', error)
@@ -40,5 +40,17 @@ module.exports = {
             console.log('Product deletion error.', error)
             res.status(500).send(error)
         }
+    },
+    updateNote: async (req, res) => {
+        //try {
+            const db = req.app.get('db')
+            const {id} = req.params
+            const {note} = req.body
+            const noteContents = await db.products.update_note( [note, id])
+            res.status(200).send(noteContents)
+       // } catch (error){
+            // console.log('Note change error')
+            // res.status(500).send(error)
+      //  }
     }
 }

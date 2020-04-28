@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
@@ -12,7 +12,7 @@ const stripeBtn = () => {
   };
 
   axios
-  .post("http://localhost:4000/charge", body)
+  .post("http://localhost:6000/charge", body)
   .then(response => {
     console.log(response);
     alert("Payment Success");
@@ -35,6 +35,5 @@ return (
     billingAddress={false}
   />
 );
-};
-
-export default stripeBtn;
+    }
+export default stripeBtn

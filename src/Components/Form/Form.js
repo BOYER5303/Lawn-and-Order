@@ -10,7 +10,8 @@ class Form extends Component {
             products: [],
             category: '',
             product: '',
-            img: ''
+            img: '',
+            note: ''
         }
     }
 
@@ -28,10 +29,10 @@ class Form extends Component {
 
     createProduct = e => {
         e.preventDefault()
-        const {category, product, img} = this.state
+        const {category, product, img, note} = this.state
         //const index = products.findIndex(product => product.name === selected)
         // sconst {product_id: product} = this.state.employees[index]
-        const newProduct = {category, product, img}
+        const newProduct = {category, product, img, note}
         axios.post('/api/products', newProduct)
             .then(() => {
                 this.props.history.push('/dashboard')
@@ -83,6 +84,15 @@ class Form extends Component {
                             name='img'
                             value={this.state.img}
                             placeholder='Image URL...'/>
+                    </span>
+                    <span>
+                        <label>Maintenance Notes: </label>
+                        <input 
+                            type='text'
+                            onChange={this.handleChange}
+                            name='note'
+                            value={this.state.note}
+                            placeholder='Maintence Notes....'/>
                     </span>
                     <button>save</button>
                 </form>

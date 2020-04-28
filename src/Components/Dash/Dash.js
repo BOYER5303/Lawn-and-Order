@@ -16,17 +16,19 @@ export default class Dash extends Component {
             //category: '',
             //product: '',
             products: [],
-            notes: [],
+            newNote: '',
             redirect: false
         }
         this.getProducts = this.getProducts.bind(this)
-        this.deleteProduct = this.deleteProduct.bind(this)
+        //this.deleteProduct = this.deleteProduct.bind(this)
+        //this.updateNote = this.updateNote.bind(this)
         this.handleLogout = this.handleLogout.bind(this)
+        //this.handleChange = this.handleChange.bind(this)
     } 
 
     componentDidMount() {
         this.getProducts()
-        this.getNotes()
+        //this.updateNote()
     }
 
     getProducts = () => {
@@ -37,15 +39,6 @@ export default class Dash extends Component {
             })
             console.log(data)
         }).catch(err => console.log('Error getting product', err))
-    }
-    getNotes = () => {
-        axios.get('/api/notes')
-        .then(({data}) => {
-            this.setState({
-                notes: data
-            })
-            console.log(data)
-        }).catch(err => console.log('Error getting notes', err))
     }
     
     deleteProduct = id => {
@@ -60,6 +53,23 @@ export default class Dash extends Component {
                 console.log('error deleting', error)
             })
     }
+
+    // updateNote(id) {
+    //    const note = this.state.newNote
+       
+    //    axios.put(`/api/products/${id}`, {note})
+    //    .then(() => this.getProducts())
+    //    .catch(error => {
+    //        console.log('Note update error', error)
+    //    })
+    // }
+
+    // handleChange = e => {
+    //     let {value, name} = e.target
+    //     this.setState({
+    //         [name] : value
+    //     })
+    // }
 
     handleLogout = () => {
         this.props.logout()
@@ -87,7 +97,15 @@ export default class Dash extends Component {
     
             <Card item={item}
             key={item.product_id}
-            deleteProduct={this.deleteProduct}/>
+            product_id= {item.product_id}
+            category={item.category}
+            product={item.product}
+            img={item.img}
+            note={item.note}
+            getProducts = {this.getProducts}
+            deleteProduct = {this.deleteProduct}/>
+            // updateNote={this.updateNote}
+            // handleChange={this.handleChange}
             
             // <Card
             // key={product.product_id}
@@ -112,12 +130,6 @@ export default class Dash extends Component {
     
 }}
 
-// const mapStateToProps = state => {
-//     let {data: product} = state.product
-//     return {product}
-// }
+// const mapStateToProps = state => state
 
-//const mapDispatchToProps = {logout}
-
-//export default handleLogout;
-//connect(mapDispatchToProps)
+// export default connect(mapStateToProps, null)(UpdateNote)
