@@ -4,9 +4,9 @@ const session = require('express-session')
 const app = express()
 require('dotenv').config()
 const nodemailer = require('nodemailer')
+const authCtrl = require('./controllers/authCtrl')
+//const requestCtrl = require('./controllers/requestCtrl')
 
-//const noteCtrl = require('./controllers/noteCtrl')
-const {login, register, logout, getUser} = require('./controllers/authCtrl')
 const productCtrl = require('./controllers/productCtrl')
 
 const bodyParser = require('body-parser')
@@ -40,10 +40,10 @@ app.use(session({
 }))
 
 
-app.post('/auth/register', register)
-app.post('/auth/login', login)
-app.delete('/auth/logout', logout)
-app.get('/auth/current', getUser)
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.delete('/auth/logout', authCtrl.logout)
+app.get('/auth/current', authCtrl.getUser)
 
 
 app.get('/api/products', productCtrl.getProducts)
@@ -51,11 +51,9 @@ app.post('/api/products', productCtrl.createProduct)
 app.delete('/api/products/:id', productCtrl.deleteProduct)
 app.put('/api/products/:id', productCtrl.updateNote)
 
+// app.post('/api/requests', requestCtrl.createRequest)
+// app.get('/api/requests', requestCtrl.getProducts)
 
-// app.get('/api/notes', noteCtrl.getNotes)
-// app.post('/api/notes', noteCtrl.createNote)
-// app.put('/api/notes/:id', noteCtrl.updateNote)
-// app.delete('/api/notes/:id', noteCtrl.deleteNote)
 
 //contact form
 app.get('/', (req, res) => {

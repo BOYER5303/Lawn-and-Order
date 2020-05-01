@@ -72,15 +72,7 @@ render(){
                         <button onClick={(event) => this.updateNote(event, product_id)}>Update Note</button>
                         <button onClick={() => this.props.deleteProduct(product_id)}>delete</button>
                     </div>
-                    {/* <span>
-                        <label>Category: </label>
-                        <input 
-                            type='text'
-                            onChange={this.handleChange}
-                            name='category'
-                            value={this.state.category}
-                            placeholder='Category...'/>
-                    </span> */}
+                    
                     
                 </div>
         

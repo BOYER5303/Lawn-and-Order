@@ -4,17 +4,17 @@ import Card from './Card'
 import {Link, Redirect} from 'react-router-dom'
 import './Dash.css'
 //import {SelectDate} from './SelectDate'
-//import {connect} from 'react-redux'
-//import {logout} from '../../Redux/reducers/user'
+import {connect} from 'react-redux'
+import {logout} from '../../Redux/reducers/user'
 
-export default class Dash extends Component {
+class Dash extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             //user: {},
             //category: '',
-            //product: '',
+            user: {},
             products: [],
             newNote: '',
             redirect: false
@@ -130,6 +130,11 @@ export default class Dash extends Component {
     
 }}
 
-// const mapStateToProps = state => state
+const mapStateToProps = state => {
+    let {data: user} = state.user
+    return {user}
+}
 
-// export default connect(mapStateToProps, null)(UpdateNote)
+const mapDispatchToProps = {logout}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dash)

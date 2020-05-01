@@ -30,14 +30,16 @@ this.handleEnd = this.handleEnd.bind(this)
     });
   };
   
-  // requestDate() {
-  //   const user_id = this.props.users.user_id
-  //   const user = this.props.user.data.name
-  //   const product_id = this.props.products.product_id
-  //   const requestStart = this.state.startDate
-  //   const requestEnd = this.state.endDate
-  //   axios.post('/api/requests, {user_id, user, ')
-  // }
+  requestDate() {
+    const user_id = this.props.users.user_id
+    const name = this.props.users.name
+    const address = this.props.users.address
+    const product_id = this.props.products.product_id
+    const request_start = this.state.startDate
+    const request_end = this.state.endDate
+    axios.post('/api/requests', {user_id, product_id, name, address, request_start, request_end}).then(()=> this.props.getRequests())
+    .catch(error => console.log('Error creating request'))
+  }
   render() {
     return (
     <>  

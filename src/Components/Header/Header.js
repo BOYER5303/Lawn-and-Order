@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import "./Header.css"
 import { HashRouter, NavLink } from 'react-router-dom'
 import StripeBtn from './Charge'
+import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 //import Contact from "../Contact"
 
 
-const Header = () => {
+const Header = (props) => {
+
+	useEffect(() => {
+		if (!props.user && props.location.pathname !== '/'){
+			props.history.push('/')
+		}
+	}, [props.user, props.location.pathname] )
+
     return (
         
 		<HashRouter>
@@ -18,8 +27,8 @@ const Header = () => {
 
 		<nav>
 			
-			<a href="/">Home</a>
-			<a href="/calender" className="selected">Calender</a>
+			<NavLink to ="/dash">Home</NavLink>
+			<NavLink to ="/calendar" className="selected">Calendar</NavLink>
 			<NavLink to ="/contact">Contact</NavLink>
 			
 
@@ -36,5 +45,9 @@ const Header = () => {
 </HashRouter>
     )
 }
+const mapStateToProps = state => {
+    let {data: user} = state.user
+    return {user}
+}
 
-export default Header
+export default connect(mapStateToProps)(withRouter(Header))

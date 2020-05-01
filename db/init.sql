@@ -37,3 +37,11 @@ VALUES ('Mower', 'John Deer 42', 'https://images.homedepot-static.com/productIma
 ('Trimmer', 'Ryobi 25cc Gas', 'https://images.homedepot-static.com/productImages/a8239a19-7a17-42df-b87a-1ac29614696b/svn/ryobi-gas-string-trimmers-ry253ss-64_1000.jpg', 'No issues.'),
 ('Trimmer', 'Weed Eater Electric', 'https://images.homedepot-static.com/productImages/36aa9f87-9f35-4eaf-b8c4-919eabaa0590/svn/weed-eater-electric-string-trimmers-967695201-64_1000.jpg', 'No issues.'),
 ('Hedger', 'Black and Decker Corded', 'https://images.homedepot-static.com/productImages/04e9f09c-7440-4987-a4f1-580a452a2ebb/svn/black-decker-electric-hedge-trimmers-behts300-64_1000.jpg', 'No issues.');
+
+CREATE TABLE requests (
+    request_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(user_id),
+    product_id INT REFERENCES products(product_id),
+    request_start TEXT,
+    request_end TEXT
+);
