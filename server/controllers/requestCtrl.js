@@ -19,7 +19,7 @@ module.exports = {
         try {
             const db = req.app.get('db')
             const {user_id, product_id, request_start, request_end} = req.body
-            const newRequest = await db.products.create_product([user_id, product_id, request_start, request_end])
+            const newRequest = await db.requests.add_request([user_id, product_id, request_start, request_end])
             res.status(200).send(newRequest)
         } catch (error) {
             console.log('Server error creating request.', error)

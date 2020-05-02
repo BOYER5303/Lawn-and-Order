@@ -57,7 +57,8 @@ render(){
                     <p>{product}</p>
                     <img src={img} alt="Unavailable." height='200' width='200' />
                     
-                    <SelectDate/>
+                    <SelectDate 
+                    product_id={this.props.product_id} />
                     
     
                     <h1>Maintenance Notes</h1>

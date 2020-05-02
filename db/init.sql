@@ -8,10 +8,10 @@ CREATE TABLE users (
 
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
-    category TEXT(24),
-    product TEXT(24),
+    category TEXT,
+    product TEXT,
     img TEXT,
-    note TEXT(200)
+    note TEXT
 );
 
 CREATE TABLE notes(

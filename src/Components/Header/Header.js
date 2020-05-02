@@ -11,7 +11,8 @@ import {withRouter} from 'react-router-dom'
 const Header = (props) => {
 
 	useEffect(() => {
-		if (!props.user && props.location.pathname !== '/'){
+		if (!props.user && props.location.pathname !== '/')
+		{
 			props.history.push('/')
 		}
 	}, [props.user, props.location.pathname] )

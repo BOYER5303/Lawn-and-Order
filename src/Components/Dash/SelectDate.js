@@ -1,6 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import axios from "axios"
+import {connect} from "react-redux"
  
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -16,6 +17,7 @@ class SelectDate extends React.Component {
 
 this.handleStart = this.handleStart.bind(this)
 this.handleEnd = this.handleEnd.bind(this)
+this.requestDate = this.requestDate.bind(this)
   }
  
   handleStart = date => {
@@ -31,15 +33,16 @@ this.handleEnd = this.handleEnd.bind(this)
   };
   
   requestDate() {
-    const user_id = this.props.users.user_id
-    const name = this.props.users.name
-    const address = this.props.users.address
-    const product_id = this.props.products.product_id
+    console.log(this.props)
+    const user_id = this.props.user.data.user_id
+    const product_id = this.props.product_id
     const request_start = this.state.startDate
     const request_end = this.state.endDate
-    axios.post('/api/requests', {user_id, product_id, name, address, request_start, request_end}).then(()=> this.props.getRequests())
+    axios.post('/api/requests', {user_id, product_id, request_start, request_end})
+    //.then(()=> this.props.getRequests())
     .catch(error => console.log('Error creating request'))
-  }
+    }  
+
   render() {
     return (
     <>  
@@ -61,5 +64,7 @@ this.handleEnd = this.handleEnd.bind(this)
   }
 }
 
-export default SelectDate;
+//export default SelectDate
+const mapStateToProps = (state) => state;
 
+export default connect(mapStateToProps, null)(SelectDate);
