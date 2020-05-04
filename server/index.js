@@ -42,9 +42,7 @@ app.use(session({
     }
 })) 
 
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-});
+
 
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
@@ -60,7 +58,9 @@ app.put('/api/products/:id', productCtrl.updateNote)
 app.post('/api/requests', requestCtrl.createRequest)
 app.get('/api/requests', requestCtrl.getRequests)
 
-
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 //contact form
 app.get('/', (req, res) => {
     res.send('Welcome to my api');

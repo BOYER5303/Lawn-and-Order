@@ -70,13 +70,14 @@ class Dash extends Component {
 
 
     render() {
+        console.log(this.state.products)
         let {redirect} = this.state
         //let {category, product, img} = this.props
 
         if (redirect) {
             return <Redirect to='/'/>
         }
-    
+        
         const mappedProducts = this.state.products.map(item =>
     
             <Card item={item}
@@ -96,14 +97,14 @@ class Dash extends Component {
             // category={category}
             // product={product}
             // img={img}/>
-                )
+                ) 
         return (
             
                     <div className='dash-main'>     
                         <div>
                             <button onClick={this.handleLogout}>logout</button>
                                     <Link to='/form' className='link'><button>add product</button></Link>
-                                    <h1>Available products:</h1>
+
                         </div>
                         <section>
                             {mappedProducts}
