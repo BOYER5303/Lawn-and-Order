@@ -6,8 +6,10 @@ require('dotenv').config()
 const nodemailer = require('nodemailer')
 const authCtrl = require('./controllers/authCtrl')
 const requestCtrl = require('./controllers/requestCtrl')
-
+const path = require('path'); 
 const productCtrl = require('./controllers/productCtrl')
+
+app.use( express.static( `${__dirname}/../build` ) );
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
@@ -18,6 +20,7 @@ app.use(cors())
 
 const configureRoutes = require('./controllers')
 configureRoutes(app);
+
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET, EMAIL, PASSWORD } = process.env
 
@@ -37,8 +40,11 @@ app.use(session({
     cookie : {
         maxAge: 1000 * 60 * 60 * 24 * 14
     }
-}))
+})) 
 
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
