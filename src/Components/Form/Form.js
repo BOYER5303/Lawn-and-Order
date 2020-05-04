@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Form.css'
 
 
 class Form extends Component {
@@ -30,8 +31,6 @@ class Form extends Component {
     createProduct = e => {
         e.preventDefault()
         const {category, product, img, note} = this.state
-        //const index = products.findIndex(product => product.name === selected)
-        // sconst {product_id: product} = this.state.employees[index]
         const newProduct = {category, product, img, note}
         axios.post('/api/products', newProduct)
             .then(() => {
@@ -50,14 +49,10 @@ class Form extends Component {
     }
 
     render() {
-        // const mappedProducts = this.state.products.map(product => {
-        //     return (
-        //         <option key={product.product_id}>{product.name}</option>
-        //     )
-        // })
         return (
             <div className='form-main'>
-                <form onSubmit={this.createProduct}>
+                <h1>Add a product:</h1>
+                <form className="input" onSubmit={this.createProduct}>
                     <span>
                         <label>Category: </label>
                         <input 
@@ -67,6 +62,7 @@ class Form extends Component {
                             value={this.state.category}
                             placeholder='Category...'/>
                     </span>
+                    <br/>
                     <span>
                         <label>Product: </label>
                         <input
@@ -76,6 +72,7 @@ class Form extends Component {
                             value={this.state.product}
                             placeholder='Product...'/>
                     </span>
+                    <br/>
                     <span>
                         <label>Image: </label>
                         <input 
@@ -85,6 +82,7 @@ class Form extends Component {
                             value={this.state.img}
                             placeholder='Image URL...'/>
                     </span>
+                    <br/>
                     <span>
                         <label>Maintenance Notes: </label>
                         <input 
@@ -94,7 +92,7 @@ class Form extends Component {
                             value={this.state.note}
                             placeholder='Maintence Notes....'/>
                     </span>
-                    <button>save</button>
+                    <button className ="button-form">save</button>
                 </form>
             </div>
         )

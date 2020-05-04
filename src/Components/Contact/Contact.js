@@ -47,15 +47,16 @@ class Contact extends React.Component {
   render() {
    return(
      <div className="contact-main">
+          <h1>Contact us:</h1>
 
           <form className="contact-form" onSubmit={ (e) => this.formSubmit(e)}>
 
             <label className="message-name" htmlFor="message-name">Your Name</label>
             <input onChange={e => this.setState({ name: e.target.value})} name="name" className="message-name" type="text" placeholder="Your Name" value={this.state.name}/>
-
+            <br/>
             <label className="message-email" htmlFor="message-email">Your Email</label>
             <input onChange={(e) => this.setState({ email: e.target.value})} name="email" className="message-email" type="email" placeholder="your@email.com" required value={this.state.email} />
-
+            <br/>
             <div>
                 <label htmlFor="issue-type">Subject</label>
                   <select id="issue-type" name="issue-type" onChange={e => this.setState({subject: e.target.value})}>
@@ -64,12 +65,13 @@ class Contact extends React.Component {
                     <option value="customer-service">Customer Service</option>
                     <option value="general-question">General Question</option>
               </select>
+              <br/>
               </div>
             <label className="message" htmlFor="message-input">Your Message</label>
             <textarea onChange={e => this.setState({ message: e.target.value})} name="message" className="message-input" type="text" placeholder="Please write your message here" value={this.state.message} required/>
-            
+            <br/>
             <div className="button-container">
-                <button type="submit" className="button button-primary">{ this.state.buttonText }</button>
+                <button type="submit" className="button button-primary">Submit</button>
             </div>
           </form>
       </div>

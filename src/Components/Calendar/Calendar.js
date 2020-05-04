@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import RequestCard from './RequestCard'
 import {Link, Redirect} from 'react-router-dom'
+import './Calendar.css'
 
 //import {SelectDate} from './SelectDate'
 import {connect} from 'react-redux'
@@ -67,7 +68,6 @@ class Calendar extends Component {
             user_id={item.user_id}
             name={item.name}
             address={item.address}
-            //product={item.product}
             request_start={item.request_start}
             request_end={item.request_end}
             getRequests = {this.getRequests}
@@ -78,7 +78,7 @@ class Calendar extends Component {
                     <div className='dash-main'>     
                         <div>
                             <button onClick={this.handleLogout}>logout</button>
-                                    <Link to='/form' className='link'>add product</Link>
+                            <Link to='/form' className='link'><button>add product</button></Link>
 
                         </div>
                         <section>

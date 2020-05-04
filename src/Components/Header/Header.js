@@ -5,16 +5,16 @@ import StripeBtn from './Charge'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-//import Contact from "../Contact"
+
 
 
 const Header = (props) => {
 
 	useEffect(() => {
-		if (!props.user && props.location.pathname !== '/')
-		{
-			props.history.push('/')
-		}
+		if (!props.user && props.location.pathname !== '/');
+		// {
+		// 	props.history.push('/')
+		// }
 	}, [props.user, props.location.pathname] )
 
     return (
@@ -22,14 +22,14 @@ const Header = (props) => {
 		<HashRouter>
 		<header className="header-main">
 
-	<div className="header-limiter">
+	<div className="header-break">
 
 		<h1><a>Lawn<span>and</span><span>Order</span></a></h1>
 
 		<nav>
 			
 			<NavLink to ="/dash">Home</NavLink>
-			<NavLink to ="/calendar" className="selected">Calendar</NavLink>
+			<NavLink to ="/calendar">Calendar</NavLink>
 			<NavLink to ="/contact">Contact</NavLink>
 			
 

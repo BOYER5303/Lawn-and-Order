@@ -25,14 +25,14 @@ const stripeBtn = () => {
 
 return (
   <StripeCheckout
-    label="Subscribe" //Component button text
-    name="Lawn and Order" //Modal Header
+    label="Subscribe" 
+    name="Lawn and Order" 
     description="Six month subscription."
-    panelLabel="Join Now" //Submit button in modal
-    amount={6000} //Amount in cents $9.99
+    panelLabel="Join Now" 
+    amount={6000} 
     token={onToken}
     stripeKey={publishableKey}
-    billingAddress={false}
+    billingAddress={true}
   />
 );
     }

@@ -54,22 +54,6 @@ class Dash extends Component {
             })
     }
 
-    // updateNote(id) {
-    //    const note = this.state.newNote
-       
-    //    axios.put(`/api/products/${id}`, {note})
-    //    .then(() => this.getProducts())
-    //    .catch(error => {
-    //        console.log('Note update error', error)
-    //    })
-    // }
-
-    // handleChange = e => {
-    //     let {value, name} = e.target
-    //     this.setState({
-    //         [name] : value
-    //     })
-    // }
 
     handleLogout = () => {
         this.props.logout()
@@ -92,7 +76,7 @@ class Dash extends Component {
         if (redirect) {
             return <Redirect to='/'/>
         }
-
+    
         const mappedProducts = this.state.products.map(item =>
     
             <Card item={item}
@@ -118,8 +102,8 @@ class Dash extends Component {
                     <div className='dash-main'>     
                         <div>
                             <button onClick={this.handleLogout}>logout</button>
-                                    <Link to='/form' className='link'>add product</Link>
-
+                                    <Link to='/form' className='link'><button>add product</button></Link>
+                                    <h1>Available products:</h1>
                         </div>
                         <section>
                             {mappedProducts}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {register} from '../../Redux/reducers/user'
-
+import './Register.css'
 class Register extends Component {
     constructor(props) {
         super(props)
@@ -37,6 +37,8 @@ class Register extends Component {
     render() {
         return (
             <div className='auth-container'>
+                <h1>Please register:</h1>
+                <div className='register-form'>
                 <form  onSubmit={this.handleRegister} className='auth-form'>
                 <input
                     type='text'
@@ -44,26 +46,31 @@ class Register extends Component {
                     name='name'
                     onChange={this.handleChange}
                     placeholder='Full Name...'/>
+                <br/>
                 <input
                     type='text'
                     value={this.state.address}
                     name='address'
                     onChange={this.handleChange}
                     placeholder='Address...'/>
+                    <br/>
                 <input
                     type='text'
                     value={this.state.email}
                     name='email'
                     onChange={this.handleChange}
                     placeholder='Email...'/>
+                    <br/>
                 <input
                     type='password'
                     value={this.state.password}
                     name='password'
                     onChange={this.handleChange}
                     placeholder='Password...'/>
+                    <br/>
                 <button>Register</button>
                 </form>
+                </div>
                 <button onClick={this.props.toggle}>need to login?</button>
             </div>
         )

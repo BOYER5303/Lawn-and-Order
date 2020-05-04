@@ -1,37 +1,36 @@
 .header-main{
 	background-color:#292c2f;
-	box-shadow:0 1px 1px #ccc;
+	box-shadow:0 1px 1px white;
 	padding: 20px 40px;
 	height: 80px;
-	color: #ffffff;
+	color: white;
 	box-sizing: border-box;
 }
 
-.header-main .header-limiter {
+.header-main .header-break {
 	max-width: 1200px;
 	text-align: center;
 	margin: 0 auto;
 }
 
-.header-main .header-limiter h1{
+.header-main .header-break h1{
 	float: left;
 	font: normal 28px Cookie, Arial, Helvetica, sans-serif;
 	line-height: 40px;
 	margin: 0;
 }
 
-.header-main .header-limiter h1 span {
+.header-main .header-break h1 span {
 	color: green;
 }
 
-/* The navigation links */
 
-.header-main .header-limiter a {
-	color: #ffffff;
+.header-main .header-break a {
+	color: white;
 	text-decoration: none;
 }
 
-.header-main .header-limiter nav {
+.header-main .header-break nav {
 	font:16px Arial, Helvetica, sans-serif;
 	line-height: 40px;
 	float: left;
@@ -39,7 +38,7 @@
 	padding: 0;
 }
 
-.header-main .header-limiter nav a{
+.header-main .header-break nav a{
 	font-size: 14px;
 	display: inline-block;
 	padding: 0 5px;
@@ -48,39 +47,18 @@
 	line-height: 1;
 }
 
-.header-main .header-limiter nav a:hover {
-	opacity: 1;
-}
 
-.header-main .header-limiter nav a.selected {
-	color: green;
-}
-
-.header-main .header-limiter ul {
-	font: 14px Arial, Helvetica, sans-serif;
-	list-style: none;
-	line-height: 1;
+.header-main .header-break ul {
 	float: right;
 }
 
-.header-main .header-limiter ul li {
+.header-main .header-break ul li {
 	display: inline-block;
 	margin-left: 15px;
-	opacity:0.9;
+	
 }
 
-.header-main .header-limiter ul li:hover{
-	opacity: 1;
-}
 
-/* The sign up button */
-
-.header-main .header-limiter ul li:last-child a {
-	font-weight: bold;
-	background-color: #3a3c3e;
-	padding: 10px 15px;
-	border-radius: 3px;
-}
 
 
 
@@ -91,7 +69,7 @@
 		height: 85px;
 	}
 
-	.header-main .header-limiter h1 {
+	.header-main .header-break h1 {
 		float: none;
 		margin: -8px 0 2px;
 		text-align: center;
@@ -99,34 +77,20 @@
 		line-height: 1;
 	}
 
-	.header-main .header-limiter nav {
+	.header-main .header-break nav {
 		margin: 0;
 		float: none;
 	}
 
-	.header-main .header-limiter nav li a {
+	.header-main .header-break nav li a {
 		font-size: 13px;
 	}
 
 
 }
 
-/* For the headers to look good, be sure to reset the margin and padding of the body */
-
 body {
 	margin:0;
 	padding:0;
 }
 
-/* .transition{
-    background-image: url(../../images/grass_background.jpg);
-    background-size: cover;
-   background-position: bottom center;
-   background-repeat: no-repeat;
-   display: inline-block;
-   height: 300px;
-   padding: 0;
-   color: white;
-   font-size: 60;
-   
-} */
