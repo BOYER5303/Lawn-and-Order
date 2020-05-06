@@ -20,7 +20,7 @@ class Dash extends Component {
             redirect: false
         }
         this.getProducts = this.getProducts.bind(this)
-        //this.deleteProduct = this.deleteProduct.bind(this)
+        this.deleteProduct = this.deleteProduct.bind(this)
         //this.updateNote = this.updateNote.bind(this)
         this.handleLogout = this.handleLogout.bind(this)
         //this.handleChange = this.handleChange.bind(this)
